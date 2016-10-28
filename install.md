@@ -1,5 +1,4 @@
- 
-## Installazione
+ ## Installazione
 
 ### GIT clone
 
@@ -44,13 +43,8 @@ All'interno della directory del progetto:
 
 ```
 virtualenv venv
+source venv/bin/activate
 ./venv/bin/pip install -r odoo/requirements.txt
+deactivate
 ```
 
-La directory **venv** è già inserita nel gitignore 
-
-## Avviare Odoo
-
-### Configurazione per IDE
-
-Per avviare Odoo utilizzare il seguente comando sostituendo <project_dir> con il percorso assoluto in cui Ã¨ stato clonato il repository
