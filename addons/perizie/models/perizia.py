@@ -50,7 +50,8 @@ class Perizia(models.Model):
         # compute_sudo=False,
     )
     numero_procedimento_anno = fields.Selection([(num, str(num)) for num in range((datetime.datetime.now().year - 10),
-                                                                                  (datetime.datetime.now().year + 1))])
+                                                                                  (datetime.datetime.now().year + 1))],
+                                                required=True, )
 
     numero_procedimento_mod = fields.Char(
         string='Mod.',
@@ -104,13 +105,3 @@ class Perizia(models.Model):
     # TODO da aggiungere il completamento con l'inserimento dei giorni senza la data
     def _inverse_age(self):
         pass
-
-
-        # Numero perizia
-        # Indagato
-        # PM
-        # Consulente Tecnico
-        # Data Inizio Operazioni
-        # Data Scadenza o giorni disponibili
-        # Descrizione
-        # Reperti
