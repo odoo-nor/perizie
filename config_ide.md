@@ -24,3 +24,11 @@ xmlrpc_port = port
 In **Edit Configuration** creare una nuova configurazione Python con i seguenti parametri:
 Script: **<project_dir>/odoo/odoo.py**
 Script Parameters: **-c etc/odoo.cfg**
+
+
+Per le cartelle 
+'''
+**platform/addons** 
+**platform/odoo** 
+'''
+Mark Directory As -> Sources Root
