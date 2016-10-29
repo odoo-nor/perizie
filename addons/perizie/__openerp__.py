@@ -11,6 +11,7 @@
     'depends': ['base', 'decimal_precision'],
     'data': [
         'views/perizia.xml',
+        'views/backend_menu.xml',
     ],
     "qweb": [],
 }
