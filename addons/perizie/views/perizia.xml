@@ -42,6 +42,24 @@
                         </div>
                     </group>
                     <group>
+                        <label for="ct_id" string="Consulente Tecnico"/>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <field name="ct_id"/>
+                            </div>
+                        </div>
+                    </group>
+                    <group>
+                        <label for="ct_id" string="Pubblico Ministero"/>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <field name="pm_id"/>
+                            </div>
+                        </div>
+                    </group>
+                    <group>
+                        <field name="indagati_ids" colspan="2"/>
+
                         <field name="name"/>
                     </group>
                     <group>

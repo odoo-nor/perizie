@@ -19,7 +19,7 @@ class Perizia(models.Model):
     )
     name = fields.Char('Title', required=True)
 
-    # Il numero della perizia è identificato come:  xxx/anno mod.xxx
+    # Il numero della perizia è identificato come:  numero anno mod.xxx
     numero_procedimento = fields.Integer(
         string='Numero Procedimento',
         search='_search_numero_procedimento',
@@ -34,7 +34,26 @@ class Perizia(models.Model):
     )
     descrizione = fields.Text('Descrizione')
 
-
+    # Consulente Tecnico
+    ct_id = fields.Many2one(
+        'res.partner', string='Consulente Tecnico',
+        # optional:
+        ondelete='set null',
+        context={},
+        domain=[],
+    )
+    # Pubblico Ministero
+    pm_id = fields.Many2one(
+        'res.partner', string='Pubblico Ministero',
+        # optional:
+        ondelete='set null',
+        context={},
+        domain=[],
+    )
+    # Indagato
+    indagati_ids = fields.Many2many(
+        'res.partner',
+        string='Indagati')
 
     # Numero perizia
     # Indagato
