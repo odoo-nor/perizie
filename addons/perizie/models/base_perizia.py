@@ -3,7 +3,7 @@
 from openerp import models, fields
 
 
-# ToDo In futuro Inserire qui le funzionalità di base dell'oggeto
+# ToDo In futuro Inserire qui le funzionalità di base dell'oggetto
 class BasePerizia(models.AbstractModel):
     _name = 'base.perizia'
     active = fields.Boolean(default=True)
