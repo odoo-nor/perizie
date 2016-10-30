@@ -1,6 +1,11 @@
-# -*- coding: utf-8 -*-Book model, where it will be used:
+# -*- coding: utf-8 -*-
 
 from openerp import models, fields
+
+
+class RepertoTypology(models.Model):
+    _name = 'base.reperto.categoria'
+    name = fields.Char('Title', required=True)
 
 
 class BaseReperto(models.AbstractModel):
@@ -11,8 +16,16 @@ class BaseReperto(models.AbstractModel):
         for record in self:
             record.active = not record.active
 
+    name = fields.Char(string='Marca',
+                       required=True, size=50, translate=False)
+    serial_number = fields.Char(string='Serial Number',
+                                required=True, size=50, translate=False)
+    modello = fields.Char(string='Modello',
+                          required=True, size=50, translate=False)
+    categoria = fields.Many2one(
+        'base.reperto.categoria', 'Categoria',
+        required=True,
+        help="...si possono inserire nuove categorie dal menu Categorie.")
 
-# Serial Number
-# Marca
-# Modello
-# Tipologia
+    dimensione = fields.Float(string='Dimensione')
+

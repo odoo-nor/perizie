@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data noupdate="0">
+        <!-- Tipologia del Reperto -->
+
+        <record id="reperto_typology_cellulare" model="base.reperto.categoria">
+            <field name="name">Cellulare</field>
+        </record>
+
+        <record id="reperto_typology_tablet" model="base.reperto.categoria">
+            <field name="name">Tablet</field>
+        </record>
+
+        <record id="reperto_typology_hd" model="base.reperto.categoria">
+            <field name="name">Hard Disk</field>
+        </record>
+    </data>
+</openerp>

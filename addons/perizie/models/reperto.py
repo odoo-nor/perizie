@@ -6,46 +6,18 @@ from openerp.fields import Date as fDate
 import time, datetime
 
 
-class RepertoCellulare(models.Model):
-    _name = 'perizie.reperto.cellulare'
+class Reperto(models.Model):
+    _name = 'perizie.reperto'
     _inherit = ['base.reperto']
 
-    _description = 'Reperto Cellulare'
+    _description = 'Reperto'
     _order = 'name'
-    _rec_name = 'short_name'
 
+    descrizione_verbale = fields.Char(string='Descrizione come da Verbale',
+                                      required=True, translate=False)
+    dimensione = fields.Float(string='Dimensione')
 
-class RepertoHardDisk(models.Model):
-    _name = 'perizie.reperto.hd'
-    _inherit = ['base.reperto']
+    numero_reperto = fields.Integer(string='Numero del Reperto', readonly=True)
 
-    _description = 'Reperto Hard Disk'
-    _order = 'name'
-    _rec_name = 'short_name'
-
-
-class RepertoMemoriaUsb(models.Model):
-    _name = 'perizie.reperto.usb'
-    _inherit = ['base.reperto']
-
-    _description = 'Reperto Memoria USB'
-    _order = 'name'
-    _rec_name = 'short_name'
-
-
-class RepertoTablet(models.Model):
-    _name = 'perizie.reperto.tablet'
-    _inherit = ['base.reperto']
-
-    _description = 'Reperto Tablet'
-    _order = 'name'
-    _rec_name = 'short_name'
-
-
-class RepertoMacchinaFotografica(models.Model):
-    _name = 'perizie.reperto.fotografica'
-    _inherit = ['base.reperto']
-
-    _description = 'Reperto Macchina Fotografica'
-    _order = 'name'
-    _rec_name = 'short_name'
+    reperto_id = fields.Many2one(
+        'perizie.perizia', 'Perizia')
