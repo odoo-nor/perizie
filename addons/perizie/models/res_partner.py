@@ -11,9 +11,7 @@ class ResPartner(models.Model):
         'perizie.perizia', 'pm_id',
         string='Pubblico Ministero')
 
-    ct_ids = fields.One2many(
-        'perizie.perizia', 'ct_id',
-        string='Consulente Tecnico')
+
 
     perizia_ids = fields.Many2many(
         'perizie.perizia',

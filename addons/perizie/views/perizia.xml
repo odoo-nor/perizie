@@ -2,19 +2,6 @@
 
 <openerp>
     <data>
-        <!--&lt;!&ndash; action on perizie.perizia &ndash;&gt;-->
-        <!--<act_window-->
-        <!--id="perizia_action"-->
-        <!--name="Perizie"-->
-        <!--res_model="perizie.perizia"/>-->
-
-        <!--&lt;!&ndash; menuitem for perizie &ndash;&gt;-->
-        <!--<menuitem-->
-        <!--id="perizia_menu"-->
-        <!--name="Perizia"-->
-        <!--action="perizia_action"-->
-        <!--parent=""-->
-        <!--sequence="5"/>-->
 
         <!-- actions on perizie.perizia -->
         <record model='ir.actions.act_window' id='perizie_perizia_act'>
@@ -47,9 +34,6 @@
                 </p>
             </field>
         </record>
-        
-
-
 
         <!-- form perizia_view_form on perizie.perizia -->
         <record id="library_book_view_form" model="ir.ui.view">
@@ -104,6 +88,7 @@
                         <field name="name"/>
                         <field name="short_name"/>
                         <field name="descrizione"/>
+                        <field name="reperti"/>
                     </group>
                 </form>
             </field>

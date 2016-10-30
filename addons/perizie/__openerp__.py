@@ -12,6 +12,7 @@
     'data': [
         'views/perizia.xml',
         'views/backend_menu.xml',
+        'data/reperto_tipologia_data.xml',
     ],
     "qweb": [],
 }

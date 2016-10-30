@@ -12,7 +12,7 @@ class Perizia(models.Model):
 
     _description = 'Perizia'
     _order = 'name'
-    _rec_name = 'short_name'
+    # _rec_name = 'short_name'
 
     _defaults = {
         'inizio_operazioni': lambda *a: time.strftime("%Y-%m-%d"),
@@ -92,6 +92,10 @@ class Perizia(models.Model):
         store=False,
         compute_sudo=False,
     )
+
+    reperti = fields.One2many(
+        'perizie.reperto', 'reperto_id',
+        String='Reperti')
 
     @api.depends('fine_operazioni')
     def _compute_age(self):
