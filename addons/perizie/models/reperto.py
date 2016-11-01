@@ -2,8 +2,6 @@
 
 from perizie.models.base_reperto import BaseReperto
 from openerp import models, fields, api
-from openerp.fields import Date as fDate
-import time, datetime
 
 
 class Reperto(models.Model):
@@ -15,9 +13,11 @@ class Reperto(models.Model):
 
     descrizione_verbale = fields.Char(string='Descrizione come da Verbale',
                                       required=True, translate=False)
-    dimensione = fields.Float(string='Dimensione')
 
     numero_reperto = fields.Integer(string='Numero del Reperto', readonly=True)
 
-    reperto_id = fields.Many2one(
-        'perizie.perizia', 'Perizia')
+    reperto_id = fields.Many2one('perizie.perizia', 'Perizia')
+
+    immagine_ids = fields.One2many(
+        'perizie.img.reperto', 'reperto_img_id',
+        String='Immagini')

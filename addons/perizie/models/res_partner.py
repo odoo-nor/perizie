@@ -11,10 +11,6 @@ class ResPartner(models.Model):
         'perizie.perizia', 'pm_id',
         string='Pubblico Ministero')
 
-
-
     perizia_ids = fields.Many2many(
         'perizie.perizia',
-        string='Authored Books',
-    )
-
+        string='Authored Books', )

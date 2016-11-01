@@ -11,6 +11,8 @@
     'depends': ['base', 'decimal_precision'],
     'data': [
         'views/perizia.xml',
+        'views/reperto.xml',
+        'views/perizie_img_reperto.xml',
         'views/backend_menu.xml',
         'data/reperto_tipologia_data.xml',
     ],

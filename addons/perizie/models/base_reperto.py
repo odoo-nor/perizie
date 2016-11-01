@@ -29,3 +29,4 @@ class BaseReperto(models.AbstractModel):
 
     dimensione = fields.Float(string='Dimensione')
 
+

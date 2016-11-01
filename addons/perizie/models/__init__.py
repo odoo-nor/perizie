@@ -5,4 +5,5 @@ from . import res_partner
 from . import reperto
 from . import base_perizia
 from . import base_reperto
+from . import img_reperto
 
