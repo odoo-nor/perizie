@@ -8,8 +8,13 @@
             <field name="model">perizie.img.reperto</field>
             <field name="arch" type="xml">
                 <form string="Immagini del Reperto">
-                    <field name="name"/>
-                    <field name="image"/>
+                    <!--<field name="image" widget="image" class="oe_avatar"/>-->
+                    <field name="image" widget="image" class="oe_left oe_image_custom"/>
+                    <div class="oe_title">
+                        <div>
+                            <field name="name" class="oe_inline" placeholder="Breve Descrizione Foto"/>
+                        </div>
+                    </div>
                 </form>
             </field>
         </record>
