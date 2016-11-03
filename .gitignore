@@ -67,3 +67,4 @@ ENV/
 
 /odoo
 /etc
+/addons/forensics/tmp

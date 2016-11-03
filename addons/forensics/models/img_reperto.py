@@ -4,7 +4,7 @@ from openerp import models, fields
 
 
 class ImgReperto(models.Model):
-    _name = 'perizie.img.reperto'
+    _name = 'forensics.img.reperto'
 
     _description = 'Immagine Reperto'
     _order = 'name'
@@ -14,4 +14,4 @@ class ImgReperto(models.Model):
 
     image = fields.Binary("Image", attachment=True, help="Immagine limited to 1024x1024px")
 
-    reperto_img_id = fields.Many2one('perizie.reperto', 'Reperto')
+    reperto_img_id = fields.Many2one('forensics.reperto', 'Reperto')

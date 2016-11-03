@@ -8,9 +8,9 @@ class ResPartner(models.Model):
     _order = 'name'
 
     pm_ids = fields.One2many(
-        'perizie.perizia', 'pm_id',
+        'forensics.perizia', 'pm_id',
         string='Pubblico Ministero')
 
     perizia_ids = fields.Many2many(
-        'perizie.perizia',
+        'forensics.perizia',
         string='Authored Books', )

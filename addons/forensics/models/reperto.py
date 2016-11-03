@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from perizie.models.base_reperto import BaseReperto
+from forensics.models.base_reperto import BaseReperto
 from openerp import models, fields, api
 
 
 class Reperto(models.Model):
-    _name = 'perizie.reperto'
+    _name = 'forensics.reperto'
     _inherit = ['base.reperto']
 
     _description = 'Reperto'
@@ -14,10 +14,10 @@ class Reperto(models.Model):
     descrizione_verbale = fields.Text(string='Descrizione come da Verbale',
                                       required=False, translate=False)
 
-    numero_reperto = fields.Integer(string='Numero del Reperto', readonly=True)
+    numero_reperto = fields.Integer(string='Numero', readonly=True)
 
-    reperto_id = fields.Many2one('perizie.perizia', 'Perizia')
+    perizia_id = fields.Many2one('forensics.perizia', 'Perizia')
 
     immagine_ids = fields.One2many(
-        'perizie.img.reperto', 'reperto_img_id',
+        'forensics.img.reperto', 'reperto_img_id',
         String='Immagini')

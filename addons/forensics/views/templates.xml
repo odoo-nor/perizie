@@ -3,10 +3,10 @@
 -->
 <openerp>
     <data>
-        <template id="assets_backend" name="web_one2many_kanban_assets" inherit_id="web.assets_backend">
+        <template id="assets_backend" name="forensics_tree_view_column_withd" inherit_id="web.assets_backend">
             <xpath expr="." position="inside">
-                <link href="/web_one2many_kanban/static/src/less/web_kanban_o2m.less" rel="stylesheet" type="text/css"/>
-                <script src="/web_one2many_kanban/static/src/js/web_kanban_o2m.js" type="text/javascript"/>
+                <link href="/forensics/static/src/css/forensics_style.css" rel="stylesheet" type="text/css"/>
+                <!--<script src="/forensics/static/src/js/forensics.js" type="text/javascript"/>-->
             </xpath>
         </template>
     </data>

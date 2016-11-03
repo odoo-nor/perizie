@@ -5,9 +5,9 @@
 
         <!-- menuitem for Perizie -->
         <menuitem name="Perizie" id="menu_root_perizie" sequence="6"/>
-        <menuitem name="Perizie" parent="menu_root_perizie" id="perizie_progetto" sequence="10"/>
-        <menuitem action="perizie_perizia_act" parent="perizie_progetto" id="perizie_progetto_menu"/>
-        <menuitem action="perizie_reperto_act" parent="perizie_progetto" id="perizie_reperto_menu"/>
+        <menuitem name="Perizie" parent="menu_root_perizie" id="forensics_progetto" sequence="10"/>
+        <menuitem action="forensics_perizia_act" parent="forensics_progetto" id="forensics_progetto_menu"/>
+        <menuitem action="forensics_reperto_act" parent="forensics_progetto" id="forensics_reperto_menu"/>
 
     </data>
 </openerp>
