@@ -2,10 +2,24 @@
 
 <openerp>
     <data>
-        <!-- form img_reperto_view_form on perizie.img.reperto -->
-        <record id="img_reperto_view_form" model="ir.ui.view">
+
+        <!-- tree form forensics_img_reperto_view_tree on forensics.img.reperto -->
+        <record id="forensics_img_reperto_view_tree" model="ir.ui.view">
+            <field name="name">Immagini Reperto</field>
+            <field name="model">forensics.img.reperto</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <!--<field name="image" widget="image" height="150px"/>-->
+                    <field name="image"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- form forensics_img_reperto_view_form on forensics.img.reperto -->
+        <record id="forensics_img_reperto_view_form" model="ir.ui.view">
             <field name="name">Immagini Reperto Form</field>
-            <field name="model">perizie.img.reperto</field>
+            <field name="model">forensics.img.reperto</field>
             <field name="arch" type="xml">
                 <form string="Immagini del Reperto">
                     <!--<field name="image" widget="image" class="oe_avatar"/>-->
@@ -19,17 +33,5 @@
             </field>
         </record>
 
-        <!-- tree form img_reperto_view_tree on perizie.img.reperto -->
-        <record id="reperto_view_tree" model="ir.ui.view">
-            <field name="name">Reperto List</field>
-            <field name="model">perizie.img.reperto</field>
-            <field name="arch" type="xml">
-                <tree>
-                    <!--<field name="image" widget="image" />-->
-                    <field name="name"/>
-                    <!--<field name="reperto_img_id"/>-->
-                </tree>
-            </field>
-        </record>
     </data>
 </openerp>
