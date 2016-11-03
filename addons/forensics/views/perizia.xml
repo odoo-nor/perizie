@@ -2,56 +2,28 @@
 
 <openerp>
     <data>
-        
-        <record id="reperto_view_tree" model="ir.ui.view">
-            <field name="name">Reperto List</field>
-            <field name="model">perizie.reperto</field>
+
+        <!-- tree forensics_perizia_view_tree on forensics.perizia -->
+        <record id="forensics_perizia_view_tree" model="ir.ui.view">
+            <field name="name">Perizia List</field>
+            <field name="model">forensics.perizia</field>
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
-                    <field name="descrizione_verbale"/>
+                    <field name="numero_procedimento"/>
+                    <field name="numero_procedimento_anno"/>
+                    <field name="numero_procedimento_mod"/>
+                    <field name="pm_id"/>
+                    <field name="giorni_consegna"/>
+                    <field name="descrizione"/>
                 </tree>
             </field>
         </record>
 
-        <!-- actions on perizie.perizia -->
-        <record model='ir.actions.act_window' id='perizie_perizia_act'>
-            <field name="name">Perizie</field>
-            <field name="res_model">perizie.perizia</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">
-                    Premi qui per creare un nuovo record
-                </p>
-                <p>
-                    Ricordati di inserire tutti i campi in celeste!
-                </p>
-            </field>
-        </record>
-
-        <!-- actions on perizie.reperto -->
-        <record model='ir.actions.act_window' id='perizie_reperto_act'>
-            <field name="name">Reperti</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">perizie.reperto</field>
-            <field name="view_mode">tree,form</field>
-            <field name="view_type">form</field>
-            <field name="view_id" ref="reperto_view_tree" />
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">
-                    Premi qui per creare un nuovo record
-                </p>
-                <p>
-                    Ricordati di inserire tutti i campi in celeste!
-                </p>
-            </field>
-        </record>
-
-        <!-- form perizia_view_form on perizie.perizia -->
-        <record id="library_book_view_form" model="ir.ui.view">
+        <!-- form forensics_perizia_view_form on forensics.perizia -->
+        <record id="forensics_perizia_view_form" model="ir.ui.view">
             <field name="name">Perizia Form</field>
-            <field name="model">perizie.perizia</field>
+            <field name="model">forensics.perizia</field>
             <field name="arch" type="xml">
                 <form>
                     <group string="Dati Perizia">
@@ -90,7 +62,7 @@
                         </div>
                     </group>
                     <group>
-                        <field name="indagati_ids" colspan="2"/>
+                        <field name="indagati_ids" colspan="2" widget="many2many_tags"/>
                     </group>
                     <group>
                         <field name="inizio_operazioni"/>
@@ -107,18 +79,6 @@
             </field>
         </record>
 
-        <!-- tree perizia_view_tree on perizie.perizia -->
-        <record id="perizia_view_tree" model="ir.ui.view">
-            <field name="name">Perizia List</field>
-            <field name="model">perizie.perizia</field>
-            <field name="arch" type="xml">
-                <tree>
-                    <field name="name"/>
-                    <field name="descrizione"/>
-                </tree>
-            </field>
-        </record>
-
         <!-- search perizia_view_tree on perizie.perizia -->
         <!--<record id="perizia_view_search" model="ir.ui.view">-->
         <!--<field name="name">Perizia Search</field>-->
@@ -131,6 +91,24 @@
         <!--</search>-->
         <!--</field>-->
         <!--</record>-->
+
+        <!-- actions on perizie.perizia -->
+        <record model='ir.actions.act_window' id='forensics_perizia_act'>
+            <field name="name">Perizie</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">forensics.perizia</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="forensics_perizia_view_tree"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Premi qui per creare un nuovo record
+                </p>
+                <p>
+                    Ricordati di inserire tutti i campi in celeste!
+                </p>
+            </field>
+        </record>
 
     </data>
 </openerp>

@@ -2,10 +2,28 @@
 
 <openerp>
     <data>
-        <!-- form reperto_view_form on perizie.reperto -->
+
+        <!--tree forensics_reperto_view_tree on forensics.reperto -->
+        <record id="forensics_reperto_view_tree" model="ir.ui.view">
+            <field name="name">Reperto List</field>
+            <field name="model">forensics.reperto</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="numero_reperto" style="width:50px"/>
+                    <field name="categoria"/>
+                    <field name="name"/>
+                    <field name="modello"/>
+                    <field name="serial_number"/>
+                    <field name="perizia_id"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <!-- form forensics_reperto_view_form on forensics.reperto -->
         <record id="reperto_view_form" model="ir.ui.view">
             <field name="name">Reperto Form</field>
-            <field name="model">perizie.reperto</field>
+            <field name="model">forensics.reperto</field>
             <field name="arch" type="xml">
                 <form string="Reperto">
                     <group string="Scheda dettagliata Reperto">
@@ -37,33 +55,57 @@
                     <group>
                         <field name="descrizione_verbale"/>
                     </group>
-                      
-
-                    <separator string="Immagini Reperto" colspan="4"/>
-        
-
-                    <group>
-
-                    <field name="immagine_ids"/>
-                      
-                        <!--<t t-foreach="record.o2mfield.raw_value" t-as='o'>-->
-                        <!--<t t-esc="o.name">-->
-                        <!--</t>-->
-                        <!--immagine_ids = fields.One2many('perizie.img.reperto', 'reperto_img_id', String='Immagini')-->
-                        <!--<t t-foreach="perizie.reperto.immagine_ids" t-as="immagine">-->
-                        <!--<img t-att-src="kanban_image('perizie.img.reperto', 'image_field_name', immagine)" t-att-data-member_id="immagine"/>-->
-                        <!--</t>-->
-
-                        <!--rooms = fields.One2many('block.rooms', 'block_id')-->
-                        <!--<t t-foreach="record.rooms.raw_value" t-as="room">-->
-                        <!--<img t-att-src="kanban_image('block.room', 'image_field_name', room)" t-att-data-member_id="room"/>-->
-                        <!--</t>-->
+                    <!--<div class="row">-->
+                    <!--<div class="col-md-6">-->
+                    <!--<group>-->
+                    <!--<field name="immagine_ids" nolabel="1">-->
+                    <!--<tree>-->
+                    <!--<field name="image" widget="image" height="150px"/>-->
+                    <!--<field name="image"/>-->
+                    <!--<field name="name"/>-->
+                    <!--</tree>-->
+                    <!--</field>-->
+                    <!--</group>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <group string="Immagini Reperto">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <group>
+                                    <field name="immagine_ids" nolabel="1">
+                                        <tree>
+                                            <field name="image" widget="image" height="150px"/>
+                                            <field name="image"/>
+                                            <field name="name"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </div>
+                        </div>
                     </group>
+
+
                 </form>
             </field>
         </record>
 
-         <!--tree reperto_view_tree on perizie.reperto -->
+        <!-- actions on forensics.reperto -->
+        <record model='ir.actions.act_window' id='forensics_reperto_act'>
+            <field name="name">Reperti</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">forensics.reperto</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="forensics_reperto_view_tree"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Premi qui per creare un nuovo record
+                </p>
+                <p>
+                    Ricordati di inserire tutti i campi in celeste!
+                </p>
+            </field>
+        </record>
 
     </data>
 </openerp>
