@@ -11,8 +11,8 @@ class Reperto(models.Model):
     _description = 'Reperto'
     _order = 'name'
 
-    descrizione_verbale = fields.Char(string='Descrizione come da Verbale',
-                                      required=True, translate=False)
+    descrizione_verbale = fields.Text(string='Descrizione come da Verbale',
+                                      required=False, translate=False)
 
     numero_reperto = fields.Integer(string='Numero del Reperto', readonly=True)
 

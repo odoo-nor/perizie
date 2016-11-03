@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+        <!-- form reperto_view_form on perizie.reperto -->
+        <record id="reperto_view_form" model="ir.ui.view">
+            <field name="name">Reperto Form</field>
+            <field name="model">perizie.reperto</field>
+            <field name="arch" type="xml">
+                <form string="Reperto">
+                    <group string="Scheda dettagliata Reperto">
+                        <label for="categoria" string="Categoria"/>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <field name="categoria"/>
+                            </div>
+                            <div class="col-md-10">
+                            </div>
+                        </div>
+                        <label for="name" string="Name"/>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <field name="name" required="1"/>
+                            </div>
+                            <div class="col-md-10">
+                            </div>
+                        </div>
+                    </group>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <group col="4" colspan="4">
+                                <field name="modello"/>
+                                <field name="serial_number"/>
+                            </group>
+                        </div>
+                    </div>
+                    <group>
+                        <field name="descrizione_verbale"/>
+                    </group>
+                      
+
+                    <separator string="Immagini Reperto" colspan="4"/>
+        
+
+                    <group>
+
+                    <field name="immagine_ids"/>
+                      
+                        <!--<t t-foreach="record.o2mfield.raw_value" t-as='o'>-->
+                        <!--<t t-esc="o.name">-->
+                        <!--</t>-->
+                        <!--immagine_ids = fields.One2many('perizie.img.reperto', 'reperto_img_id', String='Immagini')-->
+                        <!--<t t-foreach="perizie.reperto.immagine_ids" t-as="immagine">-->
+                        <!--<img t-att-src="kanban_image('perizie.img.reperto', 'image_field_name', immagine)" t-att-data-member_id="immagine"/>-->
+                        <!--</t>-->
+
+                        <!--rooms = fields.One2many('block.rooms', 'block_id')-->
+                        <!--<t t-foreach="record.rooms.raw_value" t-as="room">-->
+                        <!--<img t-att-src="kanban_image('block.room', 'image_field_name', room)" t-att-data-member_id="room"/>-->
+                        <!--</t>-->
+                    </group>
+                </form>
+            </field>
+        </record>
+
+         <!--tree reperto_view_tree on perizie.reperto -->
+
+    </data>
+</openerp>

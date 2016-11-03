@@ -2,6 +2,17 @@
 
 <openerp>
     <data>
+        
+        <record id="reperto_view_tree" model="ir.ui.view">
+            <field name="name">Reperto List</field>
+            <field name="model">perizie.reperto</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="descrizione_verbale"/>
+                </tree>
+            </field>
+        </record>
 
         <!-- actions on perizie.perizia -->
         <record model='ir.actions.act_window' id='perizie_perizia_act'>
@@ -22,9 +33,11 @@
         <!-- actions on perizie.reperto -->
         <record model='ir.actions.act_window' id='perizie_reperto_act'>
             <field name="name">Reperti</field>
+            <field name="type">ir.actions.act_window</field>
             <field name="res_model">perizie.reperto</field>
-            <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="reperto_view_tree" />
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                     Premi qui per creare un nuovo record
