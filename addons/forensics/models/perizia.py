@@ -12,7 +12,6 @@ class Perizia(models.Model):
 
     _description = 'Perizia'
     _order = 'name'
-    # _rec_name = 'short_name'
 
     _defaults = {
         'inizio_operazioni': lambda *a: time.strftime("%Y-%m-%d"),
@@ -25,23 +24,19 @@ class Perizia(models.Model):
     #      'Book title must be unique.')
     # ]
 
+
+
     # Python code constraint
     @api.constrains('fine_operazioni')
     def _check_release_date(self):
         for r in self:
-            if r.fine_operazioni is not False and r.fine_operazioni < self.inizio_operazioni:
+            if r.fine_operazioni is not False and r.fine_operazioni < r.inizio_operazioni:
                 raise models.ValidationError(
                     'La Data di Consegna deve essere successiva alla data di Inizio Operazioni!')
 
-    short_name = fields.Char(
-        string='Short Title of Perizia',
-        size=100,  # For Char only
-        translate=False,  # also for Text fields
-    )
-    name = fields.Char('Title', required=True)
-
     # Il numero della perizia è identificato come:  numero anno mod.xxx
-    numero_procedimento = fields.Char(
+
+    name = fields.Char(
         string='Numero Procedimento',
         search='_search_numero_procedimento',
         required=True,
@@ -82,9 +77,19 @@ class Perizia(models.Model):
     # Indagato
     indagati_ids = fields.Many2many(
         'res.partner',
-        string='Indagati')
+        string='Indagati',
+        relation='forensics_perizia_indagati_res_partner_rel'
+    )
+
+    # Parti
+    parti_ids = fields.Many2many(
+        'res.partner',
+        string='Parti',
+        relation='forensics_perizia_parti_res_partner_rel'
+    )
 
     inizio_operazioni = fields.Date('Inizio Operazioni')
+
     giorni_consegna = fields.Float(
         string='Giorni alla Consegna',
         compute='_compute_age',
@@ -101,10 +106,10 @@ class Perizia(models.Model):
 
     @api.depends('fine_operazioni')
     def _compute_age(self):
-        # today = fDate.from_string(fDate.today())
+        today = fDate.from_string(fDate.today())
         self._check_release_date()
         for perizia in self.filtered('fine_operazioni'):
-            delta = fDate.from_string(perizia.fine_operazioni) - fDate.from_string(self.inizio_operazioni)
+            delta = fDate.from_string(perizia.fine_operazioni) - fDate.from_string(perizia.inizio_operazioni)
             # delta = fDate.from_string(days)
             perizia.giorni_consegna = delta.days
 

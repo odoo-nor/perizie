@@ -11,6 +11,18 @@ class ResPartner(models.Model):
         'forensics.perizia', 'pm_id',
         string='Pubblico Ministero')
 
-    perizia_ids = fields.Many2many(
+    ct_idd = fields.One2many(
+        'forensics.perizia', 'ct_id',
+        string='Consulente Tecnico')
+
+    indagati_ids = fields.Many2many(
         'forensics.perizia',
-        string='Authored Books', )
+        string='Indagati',
+        relation='forensics_perizia_indagati_res_partner_rel'
+    )
+
+    parti_ids = fields.Many2many(
+        'forensics.perizia',
+        string='Parti',
+        relation='forensics_perizia_parti_res_partner_rel'
+    )
