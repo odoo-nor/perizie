@@ -3,11 +3,18 @@
 <openerp>
     <data>
 
-        <!-- menuitem for Perizie -->
-        <menuitem name="Perizie" id="menu_root_perizie" sequence="6"/>
-        <menuitem name="Perizie" parent="menu_root_perizie" id="forensics_progetto" sequence="10"/>
-        <menuitem action="forensics_perizia_act" parent="forensics_progetto" id="forensics_progetto_menu"/>
-        <menuitem action="forensics_reperto_act" parent="forensics_progetto" id="forensics_reperto_menu"/>
+        <!-- menuitem Forensics -->
+        <menuitem name="Forensics" id="menu_root_forensics" sequence="6"/>
+            <menuitem name="Censimento" parent="menu_root_forensics" id="forensics_censimento" sequence="10"/>
+                <menuitem action="forensics_perizia_act" parent="forensics_censimento" id="forensics_progetto_menu"/>
+                <menuitem action="forensics_reperto_act" parent="forensics_censimento" id="forensics_reperto_menu"/>
+
+        <!-- menuitem Amministrazione -->
+        <!-- menuitem Partners -->
+
+        <!--<menuitem id="menu_users" name="Users" parent="menu_administration" sequence="0"/>-->
+        <!--<menuitem action="action_res_groups" id="menu_action_res_groups" parent="base.menu_users" groups="base.group_no_one" sequence="3"/>-->
+        <!--<menuitem action="action_res_users" id="menu_action_res_users" parent="base.menu_users" sequence="0"/>-->
 
     </data>
 </openerp>
