@@ -10,10 +10,10 @@
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
-                    <field name="numero_procedimento"/>
                     <field name="numero_procedimento_anno"/>
                     <field name="numero_procedimento_mod"/>
                     <field name="pm_id"/>
+                    <field name="ct_id"/>
                     <field name="giorni_consegna"/>
                     <field name="descrizione"/>
                 </tree>
@@ -27,52 +27,76 @@
             <field name="arch" type="xml">
                 <form>
                     <group string="Dati Perizia">
-                        <label for="numero_procedimento" string="Procedimento"/>
                         <div class="row">
-                            <div class="col-md-1">
-                                <label for="numero_procedimento" string="numero"/>
-                                <field name="numero_procedimento"/>
+                            <div class="col-md-4">
+                                <group>
+                                    <label for="name" string="Procedimento"/>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label for="name" string="numero"/>
+                                            <field name="name"/>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="numero_procedimento_anno" string="anno"/>
+                                            <field name="numero_procedimento_anno"/>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label for="numero_procedimento_mod" string="mod."/>
+                                            <field name="numero_procedimento_mod"/>
+                                        </div>
+                                        <div class="col-md-4">
+                                        </div>
+                                    </div>
+                                </group>
+                                <group>
+                                    <label for="ct_id" string="Consulente Tecnico"/>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <field name="ct_id"/>
+                                        </div>
+                                    </div>
+                                </group>
+                                <group>
+                                    <label for="ct_id" string="Pubblico Ministero"/>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <field name="pm_id"/>
+                                        </div>
+                                    </div>
+                                </group>
+                                <group>
+                                    <label for="indagati_ids" string="Indagati"/>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <field name="indagati_ids" colspan="2" widget="many2many_tags"/>
+                                        </div>
+                                    </div>
+                                </group>
+                                <group>
+                                    <label for="Parti_ids" string="Parti"/>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <field name="parti_ids" colspan="2" widget="many2many_tags"/>
+                                        </div>
+                                    </div>
+                                </group>
                             </div>
-                            <div class="col-md-1">
-                                <label for="numero_procedimento_anno" string="anno"/>
-                                <field name="numero_procedimento_anno"/>
-                            </div>
-                            <div class="col-md-1">
-                                <label for="numero_procedimento_mod" string="mod."/>
-                                <field name="numero_procedimento_mod"/>
-                            </div>
-                            <div class="col-md-9">
+                            <div class="col-md-8">
+                                <group>
+                                    <label for="descrizione" string="Descrizione"/>
+                                    <field name="descrizione" nolabel="1"/>
+                                </group>
                             </div>
                         </div>
                     </group>
-                    <group>
-                        <label for="ct_id" string="Consulente Tecnico"/>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <field name="ct_id"/>
-                            </div>
-                        </div>
-                    </group>
-                    <group>
-                        <label for="ct_id" string="Pubblico Ministero"/>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <field name="pm_id"/>
-                            </div>
-                        </div>
-                    </group>
-                    <group>
-                        <field name="indagati_ids" colspan="2" widget="many2many_tags"/>
-                    </group>
+
+                    <separator/>
                     <group>
                         <field name="inizio_operazioni"/>
                         <field name="fine_operazioni"/>
                         <field name="giorni_consegna"/>
                     </group>
                     <group>
-                        <field name="name"/>
-                        <field name="short_name"/>
-                        <field name="descrizione"/>
                         <field name="reperti"/>
                     </group>
                 </form>
