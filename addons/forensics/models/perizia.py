@@ -4,6 +4,7 @@ from forensics.models.base_perizia import BasePerizia
 from openerp import models, fields, api
 from openerp.fields import Date as fDate
 import time, datetime
+from datetime import timedelta as td
 
 
 class Perizia(models.Model):
@@ -90,7 +91,23 @@ class Perizia(models.Model):
 
     inizio_operazioni = fields.Date('Inizio Operazioni')
 
-    giorni_consegna = fields.Float(
+    all_verbale_incarico = fields.Many2many('ir.attachment', string="Conferimento Incarico")
+    all_verbale_consegna = fields.Many2many('ir.attachment', string="Consegna in affidamento")
+    all_vari = fields.Many2many('ir.attachment', string="Vari")
+
+    reperti = fields.One2many(
+        'forensics.reperto', 'perizia_id',
+        String='Reperti')
+
+    fine_operazioni = fields.Date(
+        string='Data di Consegna',
+        # compute='_compute_age_fine',
+        # inverse='_inverse_age_fine',
+        # store=False,
+        # compute_sudo=False,
+    )
+
+    giorni_consegna = fields.Integer(
         string='Giorni alla Consegna',
         compute='_compute_age',
         inverse='_inverse_age',
@@ -98,11 +115,18 @@ class Perizia(models.Model):
         compute_sudo=False,
     )
 
-    reperti = fields.One2many(
-        'forensics.reperto', 'perizia_id',
-        String='Reperti')
-
-    fine_operazioni = fields.Date('Data di Consegna')
+    # @api.depends('giorni_consegna')
+    # def _compute_age_fine(self):
+    #     for perizia in self.filtered('giorni_consegna'):
+    #         d = fDate.from_string(perizia.inizio_operazioni) + td(days=perizia.giorni_consegna)
+    #         perizia.fine_operazioni = fDate.to_string(d)
+    # 
+    # def _inverse_age_fine(self):
+    #     self._check_release_date()
+    #     for perizia in self.filtered('fine_operazioni'):
+    #         delta = fDate.from_string(perizia.fine_operazioni) - fDate.from_string(perizia.inizio_operazioni)
+    #         # delta = fDate.from_string(days)
+    #         perizia.giorni_consegna = delta.days
 
     @api.depends('fine_operazioni')
     def _compute_age(self):
@@ -115,9 +139,9 @@ class Perizia(models.Model):
 
     # TODO da aggiungere il completamento con l'inserimento dei giorni senza la data
     def _inverse_age(self):
-        # self._check_release_date()
-        # for perizia in self.filtered('fine_operazioni'):
-        #     delta = fDate.from_string(perizia.fine_operazioni) - fDate.from_string(self.inizio_operazioni)
-        #     # delta = fDate.from_string(days)
-        #     perizia.giorni_consegna = delta.days
-        pass
+        self._check_release_date()
+        for perizia in self.filtered('giorni_consegna'):
+            d = fDate.from_string(perizia.inizio_operazioni) + td(days=perizia.giorni_consegna)
+            # delta = fDate.from_string(perizia.inizio_operazioni) + perizia.giorni_consegna
+            perizia.fine_operazioni = fDate.to_string(d)
+            # todo fare il check se cambia solo inizio_operazioni con data successiva a fine_operazioni

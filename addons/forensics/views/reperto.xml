@@ -9,7 +9,7 @@
             <field name="model">forensics.reperto</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="numero_reperto" style="width:50px"/>
+                    <field name="numero_reperto" style="width:30px"/>
                     <field name="categoria"/>
                     <field name="name"/>
                     <field name="modello"/>
@@ -26,6 +26,24 @@
             <field name="model">forensics.reperto</field>
             <field name="arch" type="xml">
                 <form string="Reperto">
+                    <br/>
+                    <div class="forensics_header">
+                        <group>
+                            <label for="categoria" string="Perizia"/>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <field name="perizia_id" readonly="1"/>
+                                </div>
+                            </div>
+                            <label for="name" string="Numero Reperto"/>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <field name="numero_reperto" readonly="1"/>
+                                </div>
+                            </div>
+                        </group>
+                    </div>
+
                     <group string="Scheda dettagliata Reperto">
                         <label for="categoria" string="Categoria"/>
                         <div class="row">
@@ -55,19 +73,6 @@
                     <group>
                         <field name="descrizione_verbale"/>
                     </group>
-                    <!--<div class="row">-->
-                    <!--<div class="col-md-6">-->
-                    <!--<group>-->
-                    <!--<field name="immagine_ids" nolabel="1">-->
-                    <!--<tree>-->
-                    <!--<field name="image" widget="image" height="150px"/>-->
-                    <!--<field name="image"/>-->
-                    <!--<field name="name"/>-->
-                    <!--</tree>-->
-                    <!--</field>-->
-                    <!--</group>-->
-                    <!--</div>-->
-                    <!--</div>-->
                     <group string="Immagini Reperto">
                         <div class="row">
                             <div class="col-md-12">
@@ -83,8 +88,6 @@
                             </div>
                         </div>
                     </group>
-
-
                 </form>
             </field>
         </record>

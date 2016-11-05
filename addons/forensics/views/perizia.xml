@@ -89,15 +89,44 @@
                             </div>
                         </div>
                     </group>
-
-                    <separator/>
                     <group>
                         <field name="inizio_operazioni"/>
                         <field name="fine_operazioni"/>
                         <field name="giorni_consegna"/>
                     </group>
+                     <br/>
+                    <separator string="Reperti"/>
                     <group>
-                        <field name="reperti"/>
+                        <field name="reperti" nolabel="1"/>
+                    </group>
+                    <br/>
+                    <group>
+                        <notebook>
+                            <page string="Incarico">
+                                <separator string="Verbale di Conferimento Incarico"/>
+                                <group col="4" colspan="4">
+                                    <field name="all_verbale_incarico" nolabel="1" widget="many2many_binary"/>
+                                </group>
+                            </page>
+                            <page string="Consegna">
+                                <separator string="Verbale di Consegna o Affidamento Reperti"/>
+                                <group col="4" colspan="4">
+                                    <field name="all_verbale_consegna" nolabel="1" widget="many2many_binary"/>
+                                </group>
+                            </page>
+                            <page string="Vari">
+                                <separator string="Allegati Vari"/>
+                                <group col="4" colspan="4">
+                                    <field name="all_vari" nolabel="1" widget="many2many_binary"/>
+                                </group>
+                            </page>
+                            <!--<page string="Preview">-->
+                            <!--<field name="preview"-->
+                            <!--nolabel="1"-->
+                            <!--attrs="{'invisible':['|',('reserved','=',True),('mimetype','!=','application/pdf')], 'readonly':True}"-->
+                            <!--widget="pdfviewer"/>-->
+                            <!--</page>-->
+                        </notebook>
                     </group>
                 </form>
             </field>
