@@ -113,6 +113,7 @@ class Perizia(models.Model):
         inverse='_inverse_age',
         store=False,
         compute_sudo=False,
+        readonly=True,
     )
 
     # @api.depends('giorni_consegna')
@@ -128,7 +129,7 @@ class Perizia(models.Model):
     #         # delta = fDate.from_string(days)
     #         perizia.giorni_consegna = delta.days
 
-    @api.depends('fine_operazioni')
+    @api.depends('fine_operazioni', 'inizio_operazioni')
     def _compute_age(self):
         today = fDate.from_string(fDate.today())
         self._check_release_date()
