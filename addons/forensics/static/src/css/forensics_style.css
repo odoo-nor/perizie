@@ -1,4 +1,10 @@
 /*[data-id="numero_reperto"] {*/
     /*width: 60px;*/
-    /*margin-top: 6px;*/
 /*}*/
+
+.forensics_header {
+    background-color: #f0f0f0;
+    border: solid 1px #a0a0a0;
+    padding: 5px;
+
+}
