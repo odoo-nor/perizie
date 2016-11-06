@@ -29,13 +29,13 @@
                                 <label for="perizia_id" string="Numero Perizia"/>
                                 <div class="row">
                                     <div class="col-md-2">
-                                        <field name="perizia_id" />
+                                        <field name="perizia_id" readonly="1"/>
                                     </div>
                                 </div>
-                                <label for="reperto_img_id" string="Reperto"/>
+                                <label for="reperto_id" string="Reperto"/>
                                 <div class="row">
                                     <div class="col-md-2">
-                                        <field name="reperto_img_id" readonly="1"/>
+                                        <field name="reperto_id" readonly="1"/>
                                     </div>
                                 </div>
                             </group>
