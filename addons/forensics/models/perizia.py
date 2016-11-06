@@ -99,6 +99,10 @@ class Perizia(models.Model):
         'forensics.reperto', 'perizia_id',
         String='Reperti')
 
+    # immagine_ids = fields.One2many(
+    #     'forensics.img.reperto', 'perizia_id',
+    #     String='Immagini')
+
     fine_operazioni = fields.Date(
         string='Data di Consegna',
         # compute='_compute_age_fine',
@@ -146,3 +150,9 @@ class Perizia(models.Model):
             # delta = fDate.from_string(perizia.inizio_operazioni) + perizia.giorni_consegna
             perizia.fine_operazioni = fDate.to_string(d)
             # todo fare il check se cambia solo inizio_operazioni con data successiva a fine_operazioni
+
+    # def write(self, cr, uid, ids, vals, context=None):
+    #     if 'dossier_type' in vals and vals['dossier_type'] == 'fascicolo':
+    #         vals['parent_id'] = False
+    #     return super(Perizia, self).write(
+    #         cr, uid, ids, vals, context=context)

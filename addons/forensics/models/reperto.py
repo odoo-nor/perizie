@@ -41,7 +41,7 @@ class Reperto(models.Model):
     perizia_id = fields.Many2one('forensics.perizia', 'Perizia')
 
     immagine_ids = fields.One2many(
-        'forensics.img.reperto', 'reperto_img_id',
+        'forensics.img.reperto', 'reperto_id',
         String='Immagini')
 
     # def create(self, cr, uid, vals, context=None):

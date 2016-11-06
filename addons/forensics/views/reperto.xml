@@ -79,6 +79,7 @@
                             <div class="col-md-12">
                                 <group>
                                     <field name="immagine_ids" string="Foto Reperto" nolabel="1">
+                                           <!--context="{'active_id' : active_id'}">-->
                                         <tree>
                                             <field name="image" widget="image" height="150px"/>
                                             <field name="image"/>
