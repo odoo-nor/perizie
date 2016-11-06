@@ -94,10 +94,11 @@
                         <field name="fine_operazioni"/>
                         <field name="giorni_consegna"/>
                     </group>
-                     <br/>
+                    <br/>
                     <separator string="Reperti"/>
                     <group>
-                        <field name="reperti" nolabel="1"/>
+                        <field name="reperti" nolabel="1"
+                               context="{'active_id' : active_id'}"/>
                     </group>
                     <br/>
                     <group>
