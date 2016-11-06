@@ -10,8 +10,8 @@
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
-                    <!--<field name="image" widget="image" height="150px"/>-->
-                    <field name="image"/>
+                    <field name="image" nolabel="1"/>
+                    <field name="image" widget="image" height="150px"/>
                 </tree>
             </field>
         </record>
@@ -22,16 +22,55 @@
             <field name="model">forensics.img.reperto</field>
             <field name="arch" type="xml">
                 <form string="Immagini del Reperto">
-                    <!--<field name="image" widget="image" class="oe_avatar"/>-->
-                    <field name="image" widget="image" class="oe_left oe_image_custom"/>
-                    <div class="oe_title">
-                        <div>
-                            <field name="name" class="oe_inline" placeholder="Breve Descrizione Foto"/>
+                    <sheet>
+
+                        <div class="forensics_header">
+                            <group>
+                                <label for="perizia_id" string="Numero Perizia"/>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <field name="perizia_id" />
+                                    </div>
+                                </div>
+                                <label for="reperto_img_id" string="Reperto"/>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <field name="reperto_img_id" readonly="1"/>
+                                    </div>
+                                </div>
+                            </group>
                         </div>
-                    </div>
+                        <br></br>
+                        <div class="row">
+                            <div class=" col-md-4">
+                                <field name="image" widget="image" class="oe_left oe_image_custom"/>
+                            </div>
+                            <div class=" col-md-8">
+                                <h4>Descrizione Immagine Reperto</h4>
+                                <field name="name" class="oe_inline" placeholder="Breve Descrizione Foto"/>
+                            </div>
+                        </div>
+                    </sheet>
                 </form>
             </field>
         </record>
 
+        <!-- actions on perizie.img.reperto -->
+        <record model='ir.actions.act_window' id='forensics_img_reperto_act'>
+            <field name="name">Foto Reperti</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">forensics.img.reperto</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="forensics_img_reperto_view_tree"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Premi qui per creare un nuovo record
+                </p>
+                <p>
+                    Ricordati di inserire tutti i campi in celeste!
+                </p>
+            </field>
+        </record>
     </data>
 </openerp>

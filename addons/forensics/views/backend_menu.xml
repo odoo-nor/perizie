@@ -8,6 +8,7 @@
             <menuitem name="Censimento" parent="menu_root_forensics" id="forensics_censimento" sequence="10"/>
                 <menuitem action="forensics_perizia_act" parent="forensics_censimento" id="forensics_progetto_menu"/>
                 <menuitem action="forensics_reperto_act" parent="forensics_censimento" id="forensics_reperto_menu"/>
+                <menuitem action="forensics_img_reperto_act" parent="forensics_censimento" id="forensics_img_reperto_menu"/>
 
         <!-- menuitem Amministrazione -->
         <!-- menuitem Partners -->
