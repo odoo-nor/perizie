@@ -53,7 +53,7 @@
                             <div class="col-md-10">
                             </div>
                         </div>
-                        <label for="name" string="Name"/>
+                        <label for="name" string="Marca"/>
                         <div class="row">
                             <div class="col-md-2">
                                 <field name="name" required="1"/>
@@ -73,16 +73,30 @@
                     <group>
                         <field name="descrizione_verbale"/>
                     </group>
-                    <group string="Immagini Reperto">
+                    <br></br>
+                    <group string="Immagini del Reperto">
                         <div class="row">
                             <div class="col-md-12">
                                 <group>
-                                    <field name="immagine_ids" nolabel="1">
+                                    <field name="immagine_ids" string="Foto Reperto" nolabel="1">
                                         <tree>
                                             <field name="image" widget="image" height="150px"/>
                                             <field name="image"/>
                                             <field name="name"/>
                                         </tree>
+                                        <form string="Immagini del Reperto">
+                                            <sheet>
+                                                <div class="row">
+                                                    <div class=" col-md-4">
+                                                        <field name="image" widget="image" class="oe_left oe_image_custom"/>
+                                                    </div>
+                                                    <div class=" col-md-8">
+                                                        <h4>Descrizione Immagine Reperto</h4>
+                                                        <field name="name" class="oe_inline" placeholder="Breve Descrizione Foto"/>
+                                                    </div>
+                                                </div>
+                                            </sheet>
+                                        </form>
                                     </field>
                                 </group>
                             </div>
