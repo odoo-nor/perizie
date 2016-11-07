@@ -151,8 +151,10 @@ class Perizia(models.Model):
             perizia.fine_operazioni = fDate.to_string(d)
             # todo fare il check se cambia solo inizio_operazioni con data successiva a fine_operazioni
 
-    # def write(self, cr, uid, ids, vals, context=None):
-    #     if 'dossier_type' in vals and vals['dossier_type'] == 'fascicolo':
-    #         vals['parent_id'] = False
-    #     return super(Perizia, self).write(
-    #         cr, uid, ids, vals, context=context)
+    def write(self, cr, uid, ids, vals, context=None):
+        if 'dossier_type' in vals and vals['dossier_type'] == 'fascicolo':
+            vals['parent_id'] = False
+        return super(Perizia, self).write(cr, uid, ids, vals, context=context)
+
+    def unlink(self, cr, uid, ids, context=None):
+        return super(Perizia, self).unlink(cr, uid, ids, context=context)

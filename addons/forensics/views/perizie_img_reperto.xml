@@ -8,7 +8,7 @@
             <field name="name">Immagini Reperto</field>
             <field name="model">forensics.img.reperto</field>
             <field name="arch" type="xml">
-                <tree>
+                <tree create="false">
                     <field name="name"/>
                     <field name="image" nolabel="1"/>
                     <field name="image" widget="image" height="150px"/>

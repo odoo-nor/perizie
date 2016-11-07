@@ -12,6 +12,7 @@
     'data': [
         'views/perizia.xml',
         'views/reperto.xml',
+        'data/sequence.xml',
         'views/perizie_img_reperto.xml',
         'views/backend_menu.xml',
         'data/reperto_tipologia_data.xml',

@@ -15,7 +15,6 @@
                     <field name="modello"/>
                     <field name="serial_number"/>
                     <field name="perizia_id"/>
-
                 </tree>
             </field>
         </record>
@@ -32,13 +31,14 @@
                             <label for="categoria" string="Perizia"/>
                             <div class="row">
                                 <div class="col-md-2">
-                                    <field name="perizia_id" readonly="1"/>
+                                    <field name="perizia_id"/>
                                 </div>
                             </div>
-                            <label for="name" string="Numero Reperto"/>
+                            <label for="numero_reperto" string="Numero Reperto"/>
                             <div class="row">
                                 <div class="col-md-2">
-                                    <field name="numero_reperto" readonly="1"/>
+                                    <field name="numero_reperto"/>
+                                    <!--<field name="numero_reperto" attrs="{'readonly':[('numero_reperto','=',False)]}"/>-->
                                 </div>
                             </div>
                         </group>
@@ -63,10 +63,10 @@
                         </div>
                     </group>
                     <div class="row">
-                        <div class="col-md-4">
-                            <group col="4" colspan="4">
-                                <field name="modello"/>
-                                <field name="serial_number"/>
+                        <div class="col-md-6">
+                            <group col="5" colspan="4">
+                                <field name="modello" colspan="2"/>
+                                <field name="serial_number" colspan="3"/>
                             </group>
                         </div>
                     </div>
@@ -79,7 +79,7 @@
                             <div class="col-md-12">
                                 <group>
                                     <field name="immagine_ids" string="Foto Reperto" nolabel="1">
-                                           <!--context="{'active_id' : active_id'}">-->
+                                        <!--context="{'active_id' : active_id'}">-->
                                         <tree>
                                             <field name="image" widget="image" height="150px"/>
                                             <field name="image"/>

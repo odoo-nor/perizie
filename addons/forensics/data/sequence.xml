@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="seq_dcbnumber" model="ir.sequence">
+            <field name="name">Reperto Sequences</field>
+            <field name="code">forensics.reperto.def</field>
+            <field name="prefix"></field>
+            <field name="padding">4</field>
+        </record>
+
+        <record id="seq_filenumber" model="ir.sequence">
+            <field name="name">Reperto Sequences</field>
+            <field name="code">forensics.reperto.def</field>
+            <field name="prefix"></field>
+            <field name="padding">4</field>
+        </record>
+    </data>
+</openerp>
