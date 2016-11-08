@@ -96,6 +96,9 @@
                     </group>
                     <br/>
                     <separator string="Reperti"/>
+                    <button name="%(inserimento_reperto_action)d" type='action'
+                            string="Inserimento Reperto"
+                            class="oe_highlight_positive"/>
                     <group>
                         <field name="reperti" nolabel="1"
                                context="{'active_id' : active_id'}">
@@ -110,7 +113,6 @@
                                 <button type="object" icon="gtk-delete" name="unlink"/>
                             </tree>
                             <form string="Reperto">
-
                                 <field name="numero_reperto" invisible="1"/>
                                 <field name="perizia_id" invisible="1"/>
 

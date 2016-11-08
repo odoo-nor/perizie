@@ -28,7 +28,7 @@
                     <br/>
                     <div class="forensics_header">
                         <group>
-                            <label for="categoria" string="Perizia"/>
+                            <label for="perizia_id" string="Perizia"/>
                             <div class="row">
                                 <div class="col-md-2">
                                     <field name="perizia_id"/>

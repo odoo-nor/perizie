@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+        <!-- wizard action on protocollo.protocollo -->
+        <act_window id="inserimento_reperto_action"
+                    name="Inserimento Reperto"
+                    src_model="forensics.perizia"
+                    res_model="forensics.inserimento.reperto.wizard"
+                    view_type="form" view_mode="form"
+                    target="new"
+        />
+        <!-- wizard view -->
+        <record id="inserimento_reperto_view" model="ir.ui.view">
+            <field name="name">Inserimento Repertio</field>
+            <field name="model">forensics.inserimento.reperto.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Inserimento Repertio" version="7.0">
+                    <sheet>
+                        <div class="forensics_header">
+                            <group>
+                                <label for="numero_procedimento" string="Procedimento"/>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label for="numero_procedimento" string="numero"/>
+                                        <field name="numero_procedimento" readonly="1"/>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="numero_procedimento_anno" string="anno"/>
+                                        <field name="numero_procedimento_anno" readonly="1"/>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="numero_procedimento_mod" string="mod."/>
+                                        <field name="numero_procedimento_mod" readonly="1"/>
+                                    </div>
+                                    <div class="col-md-4">
+                                    </div>
+                                </div>
+                                <label for="numero_reperto" string="Numero Reperto"/>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <field name="numero_reperto" readonly="1"/>
+                                        <!--<field name="numero_reperto" attrs="{'readonly':[('numero_reperto','=',False)]}"/>-->
+                                    </div>
+                                </div>
+                            </group>
+                        </div>
+
+
+                        <group string="Scheda dettagliata Reperto">
+                            <label for="categoria" string="Categoria"/>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <field name="categoria"/>
+                                </div>
+                                <div class="col-md-8">
+                                </div>
+                            </div>
+                            <label for="name" string="Marca"/>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <field name="name" required="1"/>
+                                </div>
+                                <div class="col-md-8">
+                                </div>
+                            </div>
+                        </group>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <group col="5">
+                                    <field name="modello" colspan="2"/>
+                                    <field name="serial_number" colspan="3"/>
+                                </group>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="descrizione_verbale" string="Descrizione come da Verbale"/>
+                                <field name="descrizione_verbale"/>
+                            </div>
+                        </div>
+                        <br></br>
+                        <group string="Immagini del Reperto">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <group>
+                                        <field name="immagine_ids" string="Foto Reperto" nolabel="1">
+                                            <!--context="{'active_id' : active_id'}">-->
+                                            <tree>
+                                                <field name="image" widget="image" height="150px"/>
+                                                <field name="image"/>
+                                                <field name="name"/>
+                                            </tree>
+                                            <form string="Immagini del Reperto">
+                                                <sheet>
+                                                    <div class="row">
+                                                        <div class=" col-md-4">
+                                                            <field name="image" widget="image" class="oe_left oe_image_custom"/>
+                                                        </div>
+                                                        <div class=" col-md-8">
+                                                            <h4>Descrizione Immagine Reperto</h4>
+                                                            <field name="name" class="oe_inline" placeholder="Breve Descrizione Foto"/>
+                                                        </div>
+                                                    </div>
+                                                </sheet>
+                                            </form>
+                                        </field>
+                                    </group>
+                                </div>
+                            </div>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button string="Procedi" name="action_request" type="object" class="oe_highlight"/>
+                        o
+                        <button string="Abbandona" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</openerp>

@@ -97,7 +97,7 @@ class Perizia(models.Model):
 
     reperti = fields.One2many(
         'forensics.reperto', 'perizia_id',
-        String='Reperti')
+        String='Reperti', store=True)
 
     # immagine_ids = fields.One2many(
     #     'forensics.img.reperto', 'perizia_id',

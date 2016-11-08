@@ -17,6 +17,7 @@
         'views/backend_menu.xml',
         'data/reperto_tipologia_data.xml',
         'views/templates.xml',
+        'wizard/inserimento_reperto_wizard_view.xml',
     ],
     "qweb": [],
 }
