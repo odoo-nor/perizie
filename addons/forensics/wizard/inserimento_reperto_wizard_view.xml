@@ -19,31 +19,49 @@
                     <sheet>
                         <div class="forensics_header">
                             <group>
-                                <label for="numero_procedimento" string="Procedimento"/>
                                 <div class="row">
-                                    <div class="col-md-3">
-                                        <label for="numero_procedimento" string="numero"/>
-                                        <field name="numero_procedimento" readonly="1"/>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="numero_procedimento_anno" string="anno"/>
-                                        <field name="numero_procedimento_anno" readonly="1"/>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label for="numero_procedimento_mod" string="mod."/>
-                                        <field name="numero_procedimento_mod" readonly="1"/>
-                                    </div>
-                                    <div class="col-md-4">
-                                    </div>
-                                </div>
-                                <label for="numero_reperto" string="Numero Reperto"/>
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <field name="numero_reperto" readonly="1"/>
-                                        <!--<field name="numero_reperto" attrs="{'readonly':[('numero_reperto','=',False)]}"/>-->
+                                    <div class="col-md-12">
+                                        <group col="6">
+                                            <field name="info_procedimento_visualizzate" colspan="3"/>
+                                            <field name="numero_reperto" colspan="3"/>
+                                        </group>
                                     </div>
                                 </div>
                             </group>
+                            <group>
+                                <label for="pm_id" string="Pubblico Ministero"/>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <field name="pm_id"/>
+                                    </div>
+                                </div>
+                                <label for="ct_id" string="Consulente Tecnico"/>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <field name="ct_id" required="1"/>
+                                    </div>
+                     
+                                </div>
+                            </group>
+
+
+                            <!--<div class="row">-->
+                                <!--<div class="col-md-5">-->
+                                    <!--<label for="pm_id" string="Pubblico Ministero"/>-->
+                                    <!--<field name="pm_id" readonly="1"/>-->
+                                <!--</div>-->
+                                <!--<div class="col-md-5">-->
+                                    <!--<label for="ct_id" string="Consulente Tecnico"/>-->
+                                    <!--<field name="ct_id" readonly="1"/>-->
+                                <!--</div>-->
+                                <!--<div class="col-md-5">-->
+                                    <!--<label for="numero_procedimento_mod" string="mod."/>-->
+                                    <!--<field name="numero_procedimento_mod" readonly="1"/>-->
+                                <!--</div>-->
+                                <!--<div class="col-md-4">-->
+                                <!--</div>-->
+                            <!--</div>-->
+
                         </div>
 
 

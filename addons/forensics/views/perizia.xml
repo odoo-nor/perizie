@@ -9,7 +9,7 @@
             <field name="model">forensics.perizia</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="name"/>
+                    <field name="name" style="width: 8%%"/>
                     <field name="numero_procedimento_anno"/>
                     <field name="numero_procedimento_mod"/>
                     <field name="pm_id"/>
