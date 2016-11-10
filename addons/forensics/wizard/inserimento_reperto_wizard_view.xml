@@ -20,51 +20,47 @@
                         <div class="forensics_header">
                             <group>
                                 <div class="row">
-                                    <div class="col-md-12">
-                                        <group col="6">
-                                            <field name="info_procedimento_visualizzate" colspan="3"/>
-                                            <field name="numero_reperto" colspan="3"/>
+                                    <div class="col-md-6">
+                                        <group>
+                                            <label for="info_procedimento_visualizzate" string="Procedimento"/>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <field name="info_procedimento_visualizzate"/>
+                                                </div>
+                                            </div>
+                                            <label for="numero_reperto" string="Numero Reperto"/>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <field name="numero_reperto"/>
+                                                </div>
+                                            </div>
+                                        </group>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <group>
+                                            <label for="ct_id" string="Consulente Tecnico"/>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <field name="ct_id"/>
+                                                </div>
+                                            </div>
+                                            <label for="pm_id" string="Pubblico Ministero"/>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <field name="pm_id"/>
+                                                </div>
+                                            </div>
+                                            <label for="indagati_ids" string="Indagati"/>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <field name="indagati_ids" readonly="1" widget="many2many_tags" nolabel="1"/>
+                                                </div>
+                                            </div>
                                         </group>
                                     </div>
                                 </div>
                             </group>
-                            <group>
-                                <label for="pm_id" string="Pubblico Ministero"/>
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <field name="pm_id"/>
-                                    </div>
-                                </div>
-                                <label for="ct_id" string="Consulente Tecnico"/>
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <field name="ct_id" required="1"/>
-                                    </div>
-                     
-                                </div>
-                            </group>
-
-
-                            <!--<div class="row">-->
-                                <!--<div class="col-md-5">-->
-                                    <!--<label for="pm_id" string="Pubblico Ministero"/>-->
-                                    <!--<field name="pm_id" readonly="1"/>-->
-                                <!--</div>-->
-                                <!--<div class="col-md-5">-->
-                                    <!--<label for="ct_id" string="Consulente Tecnico"/>-->
-                                    <!--<field name="ct_id" readonly="1"/>-->
-                                <!--</div>-->
-                                <!--<div class="col-md-5">-->
-                                    <!--<label for="numero_procedimento_mod" string="mod."/>-->
-                                    <!--<field name="numero_procedimento_mod" readonly="1"/>-->
-                                <!--</div>-->
-                                <!--<div class="col-md-4">-->
-                                <!--</div>-->
-                            <!--</div>-->
-
                         </div>
-
-
                         <group string="Scheda dettagliata Reperto">
                             <label for="categoria" string="Categoria"/>
                             <div class="row">
@@ -84,10 +80,11 @@
                             </div>
                         </group>
                         <div class="row">
-                            <div class="col-md-10">
-                                <group col="5">
-                                    <field name="modello" colspan="2"/>
-                                    <field name="serial_number" colspan="3"/>
+                            <div class="col-md-12">
+                                <group col="10">
+                                    <field name="modello" colspan="4"/>
+                                    <field name="serial_number" colspan="4"/>
+                                    <field name="dimensione" colspan="2"/>
                                 </group>
                             </div>
                         </div>
