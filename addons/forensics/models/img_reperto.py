@@ -29,12 +29,12 @@ class ImgReperto(models.Model):
 
     reperto_id = fields.Many2one('forensics.reperto', 'Reperto')
 
-    perizia_id = fields.Many2one('forensics.perizia', 'Perizia',
-                                 compute='_compute_perizia',
-                                 inverse='_inverse_perizia',
-                                 store=False,
-                                 compute_sudo=False,
-                                 )
+    # perizia_id = fields.Many2one('forensics.perizia', 'Perizia',
+    #                              compute='_compute_perizia',
+    #                              inverse='_inverse_perizia',
+    #                              store=False,
+    #                              compute_sudo=False,
+    #                              )
 
     @api.depends('reperto_id')
     def _compute_perizia(self):
@@ -44,6 +44,6 @@ class ImgReperto(models.Model):
     def _inverse_perizia(self):
         pass
 
-    # def create(self, cr, uid, vals, context=None):
-    #     reperto = super(ImgReperto, self).create(cr, uid, vals, context=context)
-    #     return reperto
+    def create(self, cr, uid, vals, context=None):
+        reperto = super(ImgReperto, self).create(cr, uid, vals, context=context)
+        return reperto

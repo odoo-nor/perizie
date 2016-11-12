@@ -3,6 +3,7 @@
 from openerp.osv import fields, osv
 import time, datetime
 from openerp import api
+from openerp.tools.translate import _
 
 # ----------------------------------------------------------
 # Shortcuts
@@ -15,14 +16,12 @@ class forensics_img_reperto_wizard(osv.TransientModel):
     _name = 'forensics.img.reperto.wizard'
 
     _columns = {
-        # TODO: inserire anche AOO in type?
         'reperto_id': fields.many2one('forensics.inserimento.reperto.wizard',
                                       'Inserisci Immagine'),
 
         'name': fields.text(string='Descrizione foto reperto',
                             required=True, size=100, translate=False),
         'image': fields.binary("Image", attachment=True, help="Immagine limited to 1024x1024px"),
-
     }
 
 
@@ -154,6 +153,17 @@ class wizard(osv.TransientModel):
         if 'active_id' in context.keys():
             perizia_id = context['active_id']
 
+            # creo i sender_receivers
+            img_reperto_obj = self.pool.get('forensics.img.reperto')
+            img_reperto = []
+            for img_rep in wizard.immagine_ids:
+                irvals = {
+                    'name': img_rep.name,
+                    'image': img_rep.image,
+                    # 'reperto_id': img_rep.reperto_id.id,
+                }
+                img_reperto.append(img_reperto_obj.create(cr, uid, irvals))
+
             reperto_vals = {
                 'name': wizard.name,
                 'serial_number': wizard.serial_number,
@@ -163,7 +173,7 @@ class wizard(osv.TransientModel):
                 'descrizione_verbale': wizard.descrizione_verbale,
                 'numero_reperto': wizard.numero_reperto,
                 'perizia_id': perizia_id,
-
+                'immagine_ids': [(6, 0, img_reperto)],
             }
 
             self.pool.get("forensics.reperto").create(cr, SUPERUSER_ID, reperto_vals, context=None)

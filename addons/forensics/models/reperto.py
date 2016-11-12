@@ -37,10 +37,6 @@ class Reperto(models.Model):
             perizia_obj = self.pool.get('forensics.perizia')
             perizia = perizia_obj.browse(self.env.cr, self.env.uid, perizia_id)
             result['numero_reperto'] = len(perizia.reperti) + 1
-
-            # result['numero_reperto'] = int(self.pool.get('ir.sequence').get(self.env.cr, self.env.uid, 'forensics.reperto.def'))
-            # reperti = perizia.reperti.ids
-        #     result['sequence_numero_reperto'] = self.pool.get('ir.sequence').get(self.env.cr, self.env.uid, 'forensics.reperto.def')
         return result
 
     # @api.model
@@ -62,24 +58,13 @@ class Reperto(models.Model):
     #     pass
 
     # country_ids = self.env['res.country'].search([('code', '=', 'IN')])
-    # 
-    # if country_ids:
-    #     res.update({
-    #         'country_id': country_ids[0].id,  # Many2one field
-    #         'city': 'Gandhinagar',
-    #         'website': 'www.odootechnical.com',
-    #         'email': 'contact@odootechnical.com'
-    #     })
+
     # return res
 
     descrizione_verbale = fields.Text(string='Descrizione come da Verbale',
                                       required=False, translate=False)
 
     numero_reperto = fields.Integer(string='Numero', store=True)
-    # sequence_numero_reperto = fields.Many2one('ir.sequence',
-    #                                           'Sequenza',
-    #                                           store=True,
-    #                                           required=False, readonly=True)
 
     perizia_id = fields.Many2one('forensics.perizia', 'Perizia')
 
