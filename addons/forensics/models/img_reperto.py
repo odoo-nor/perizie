@@ -36,6 +36,18 @@ class ImgReperto(models.Model):
     #                              compute_sudo=False,
     #                              )
 
+    perizia_id = fields.Many2one('forensics.perizia', 'Perizia')
+
+    @api.model
+    def default_get(self, vals):
+        result = super(ImgReperto, self).default_get(vals)
+        # if 'perizia_id' in result.keys():
+        #     perizia_id = result['perizia_id']
+        #     perizia_obj = self.pool.get('forensics.perizia')
+        #     perizia = perizia_obj.browse(self.env.cr, self.env.uid, perizia_id)
+        #     result['numero_reperto'] = len(perizia.reperti) + 1
+        return result
+
     @api.depends('reperto_id')
     def _compute_perizia(self):
         for img_reperto in self.filtered('name'):

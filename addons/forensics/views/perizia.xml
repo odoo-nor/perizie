@@ -100,7 +100,7 @@
                             string="Inserimento Reperto"
                             class="oe_highlight_positive"/>
                     <group>
-                        <field name="reperti" nolabel="1"
+                        <field name="reperti" nolabel="1" readonly="1"
                                context="{'active_id' : active_id'}">
                             <tree>
                                 <field name="numero_reperto" style="width:30px"/>

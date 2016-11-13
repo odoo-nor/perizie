@@ -22,6 +22,8 @@ class forensics_img_reperto_wizard(osv.TransientModel):
         'name': fields.text(string='Descrizione foto reperto',
                             required=True, size=100, translate=False),
         'image': fields.binary("Image", attachment=True, help="Immagine limited to 1024x1024px"),
+        'perizia_id': fields.many2one('forensics.perizia', 'Perizia'),
+
     }
 
 
@@ -160,7 +162,7 @@ class wizard(osv.TransientModel):
                 irvals = {
                     'name': img_rep.name,
                     'image': img_rep.image,
-                    # 'reperto_id': img_rep.reperto_id.id,
+                    'perizia_id': perizia_id,
                 }
                 img_reperto.append(img_reperto_obj.create(cr, uid, irvals))
 
