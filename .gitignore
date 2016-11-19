@@ -68,3 +68,10 @@ ENV/
 /odoo
 /etc
 /addons/forensics/tmp
+
+#addons vari
+/addons/web_one2many_kanban
+/addons/web_pdf_preview
+/addons/web_pdf_widget
+/addons/web_tree_image
+/addons/odoo-web-pdf-preview-print-9.0
