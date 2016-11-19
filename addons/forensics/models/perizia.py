@@ -5,6 +5,15 @@ from openerp import models, fields, api
 from openerp.fields import Date as fDate
 import time, datetime
 from datetime import timedelta as td
+import os
+import subprocess
+import shutil
+import mimetypes
+import base64
+import magic
+import datetime
+import time
+import logging
 
 
 class Perizia(models.Model):
@@ -91,9 +100,72 @@ class Perizia(models.Model):
 
     inizio_operazioni = fields.Date('Inizio Operazioni')
 
-    all_verbale_incarico = fields.Many2many('ir.attachment', string="Conferimento Incarico")
-    all_verbale_consegna = fields.Many2many('ir.attachment', string="Consegna in affidamento")
+    # all_verbale_incarico = fields.Many2many('ir.attachment', string="Conferimento Incarico")
+    # all_verbale_consegna = fields.Many2many('ir.attachment', string="Consegna in affidamento")
     all_vari = fields.Many2many('ir.attachment', string="Vari")
+
+    mimetype = fields.Char('Mime Type', size=64)
+
+    STATE_SELECTION = [
+        ('draft', 'Compilazione'),
+        ('registered', 'Registrato'),
+        ('notified', 'Notificato'),
+        ('waiting', 'Pec Inviata'),
+        ('error', 'Errore Pec'),
+        ('sent', 'Inviato'),
+        ('canceled', 'Annullato'),
+    ]
+    state = fields.Selection(
+        STATE_SELECTION, 'Stato', readonly=True,
+        help="Lo stato del protocollo.", select=True),
+
+    reserved = fields.Boolean('Riservato',
+                              readonly=True,
+                              help="Se il protocollo e' riservato \
+        il documento risulta visibile solo \
+        all'ufficio di competenza")
+
+    datas = fields.Binary('File Documento', required=False)
+
+    @api.onchange('datas')
+    def on_change_datas(self, cr, uid, ids,
+                        datas,
+                        context=None):
+        values = {}
+        if datas:
+            ct = magic.from_buffer(base64.b64decode(datas), mime=True)
+            values = {
+                'preview': datas,
+                'mimetype': ct
+            }
+        return {'value': values}
+
+    @api.depends('datas')
+    def _get_preview_datas(self):
+        if isinstance(self.ids, (list, tuple)) and not len(self.ids):
+            return []
+        if isinstance(self.ids, (long, int)):
+            self.ids = [self.ids]
+        res = dict.fromkeys(self.ids, False)
+        # self.browse(self.env.cr, self.env.uid, self.ids[0], context=None)
+
+        prot = self.browse(self.ids[0])
+        if prot.datas is not None:
+            res[prot.id] = prot.datas
+
+        res[self.id] = self.datas
+        self.preview = res
+        # return res
+
+    def _inverse_preview(self):
+
+        pass
+
+    preview = fields.Binary(string='Preview',
+                            compute='_get_preview_datas',
+                            inverse='_inverse_preview',
+                            store=False,
+                            compute_sudo=False, )
 
     reperti = fields.One2many(
         'forensics.reperto', 'perizia_id',

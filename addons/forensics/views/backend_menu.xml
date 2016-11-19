@@ -3,12 +3,21 @@
 <openerp>
     <data>
 
+        <record id="custom_report_act" model="ir.actions.act_url">
+            <field name="name">Report</field>
+            <field name="type">ir.actions.act_url</field>
+            <field name="target">new</field>
+            <field name="url">http://localhost:8070/report/html/forensics.qweb_res_partner_birthdays/1</field>
+        </record>
+
         <!-- menuitem Forensics -->
         <menuitem name="Forensics" id="menu_root_forensics" sequence="6"/>
             <menuitem name="Censimento" parent="menu_root_forensics" id="forensics_censimento" sequence="10"/>
                 <menuitem action="forensics_perizia_act" parent="forensics_censimento" id="forensics_progetto_menu"/>
                 <menuitem action="forensics_reperto_act" parent="forensics_censimento" id="forensics_reperto_menu"/>
                 <menuitem action="forensics_img_reperto_act" parent="forensics_censimento" id="forensics_img_reperto_menu"/>
+            <menuitem name="Notule" parent="menu_root_forensics" id="forensics_notule" sequence="11"/>
+                <menuitem action="custom_report_act" parent="forensics_notule" id="custom_report_menu"/>
 
         <!-- menuitem Amministrazione -->
         <!-- menuitem Partners -->
@@ -16,6 +25,7 @@
         <!--<menuitem id="menu_users" name="Users" parent="menu_administration" sequence="0"/>-->
         <!--<menuitem action="action_res_groups" id="menu_action_res_groups" parent="base.menu_users" groups="base.group_no_one" sequence="3"/>-->
         <!--<menuitem action="action_res_users" id="menu_action_res_users" parent="base.menu_users" sequence="0"/>-->
+
 
     </data>
 </openerp>

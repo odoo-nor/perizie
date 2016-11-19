@@ -26,6 +26,10 @@
             <field name="model">forensics.perizia</field>
             <field name="arch" type="xml">
                 <form>
+                    <field name="mimetype" invisible="1"/>
+                    <field name="reserved"/>
+                    <!--<field name="state"/>-->
+                    <field name="datas" filename="datas_fname" nolabel="1" on_change="on_change_datas(datas)"/>
                     <group string="Dati Perizia">
                         <div class="row">
                             <div class="col-md-4">
@@ -64,36 +68,49 @@
                                         </div>
                                     </div>
                                 </group>
+                                <!--<group>-->
+                                <!--<label for="indagati_ids" string="Indagati"/>-->
+                                <!--<div class="row">-->
+                                <!--<div class="col-md-8">-->
+                                <!--<field name="indagati_ids" colspan="2" widget="many2many_tags"/>-->
+                                <!--</div>-->
+                                <!--</div>-->
+                                <!--</group>-->
+                                <!--<group>-->
+                                <!--<label for="Parti_ids" string="Parti"/>-->
+                                <!--<div class="row">-->
+                                <!--<div class="col-md-8">-->
+                                <!--<field name="parti_ids" colspan="2" widget="many2many_tags"/>-->
+                                <!--</div>-->
+                                <!--</div>-->
+                                <!--</group>-->
                                 <group>
-                                    <label for="indagati_ids" string="Indagati"/>
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <field name="indagati_ids" colspan="2" widget="many2many_tags"/>
-                                        </div>
-                                    </div>
-                                </group>
-                                <group>
-                                    <label for="Parti_ids" string="Parti"/>
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <field name="parti_ids" colspan="2" widget="many2many_tags"/>
-                                        </div>
-                                    </div>
+                                    <field name="indagati_ids" widget="many2many_tags"/>
+                                    <field name="parti_ids" widget="many2many_tags"/>
                                 </group>
                             </div>
                             <div class="col-md-8">
                                 <group>
-                                    <label for="descrizione" string="Descrizione"/>
-                                    <field name="descrizione" nolabel="1"/>
+                                    <field name="inizio_operazioni"/>
+                                    <field name="fine_operazioni"/>
+                                    <field name="giorni_consegna"/>
                                 </group>
+                                <!--<group>-->
+                                <!--<label for="descrizione" string="Descrizione"/>-->
+                                <!--<field name="descrizione" nolabel="1"/>-->
+                                <!--</group>-->
                             </div>
                         </div>
                     </group>
                     <group>
-                        <field name="inizio_operazioni"/>
-                        <field name="fine_operazioni"/>
-                        <field name="giorni_consegna"/>
+                        <label for="descrizione" string="Descrizione"/>
+                        <field name="descrizione" nolabel="1"/>
                     </group>
+                    <!--<group>-->
+                    <!--<field name="inizio_operazioni"/>-->
+                    <!--<field name="fine_operazioni"/>-->
+                    <!--<field name="giorni_consegna"/>-->
+                    <!--</group>-->
                     <br/>
                     <separator string="Reperti"/>
                     <button name="%(inserimento_reperto_action)d" type='action'
@@ -115,7 +132,6 @@
                             <form string="Reperto">
                                 <field name="numero_reperto" invisible="1"/>
                                 <field name="perizia_id" invisible="1"/>
-
                                 <group string="Scheda dettagliata Reperto">
                                     <label for="categoria" string="Categoria"/>
                                     <div class="row">
@@ -180,20 +196,36 @@
 
                     </group>
                     <br/>
+                    <separator string="Allegati"/>
+                    <button name="%(inserimento_reperto_action)d" type='action'
+                            string="Inserimento Reperto"
+                            class="oe_highlight_positive"/>
+                    <button name="%(inserimento_reperto_action)d" type='action'
+                            string="Inserimento Reperto"
+                            class="oe_highlight_positive"/>
+                    <button name="%(inserimento_reperto_action)d" type='action'
+                            string="Inserimento Reperto"
+                            class="oe_highlight_positive"/>
+                    <separator string="Preview"/>
                     <group>
                         <notebook>
-                            <page string="Incarico">
-                                <separator string="Verbale di Conferimento Incarico"/>
-                                <group col="4" colspan="4">
-                                    <field name="all_verbale_incarico" nolabel="1" widget="many2many_binary"/>
-                                </group>
+                            <page string="Preview">
+                                <field name="preview"
+                                       nolabel="1"
+                                       widget="pdfviewer"/>
                             </page>
-                            <page string="Consegna">
-                                <separator string="Verbale di Consegna o Affidamento Reperti"/>
-                                <group col="4" colspan="4">
-                                    <field name="all_verbale_consegna" nolabel="1" widget="many2many_binary"/>
-                                </group>
-                            </page>
+                            <!--<page string="Incarico">-->
+                            <!--<separator string="Verbale di Conferimento Incarico"/>-->
+                            <!--<group col="4" colspan="4">-->
+                            <!--<field name="all_verbale_incarico" nolabel="1" widget="many2many_binary"/>-->
+                            <!--</group>-->
+                            <!--</page>-->
+                            <!--<page string="Consegna">-->
+                            <!--<separator string="Verbale di Consegna o Affidamento Reperti"/>-->
+                            <!--<group col="4" colspan="4">-->
+                            <!--<field name="all_verbale_consegna" nolabel="1" widget="many2many_binary"/>-->
+                            <!--</group>-->
+                            <!--</page>-->
                             <page string="Vari">
                                 <separator string="Allegati Vari"/>
                                 <group col="4" colspan="4">

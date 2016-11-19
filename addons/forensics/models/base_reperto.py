@@ -17,14 +17,17 @@ class BaseReperto(models.AbstractModel):
             record.active = not record.active
 
     name = fields.Char(string='Marca',
-                       required=True, size=50, translate=False)
+                       # required=True, 
+                       size=50, translate=False)
     serial_number = fields.Char(string='Serial Number',
-                                required=True, size=50, translate=False)
+                                # required=True,
+                                size=50, translate=False)
     modello = fields.Char(string='Modello',
-                          required=True, size=50, translate=False)
+                          # required=True, 
+                          size=50, translate=False)
     categoria = fields.Many2one(
         'base.reperto.categoria', 'Categoria',
-        required=True,
+        # required=True,
         help="...si possono inserire nuove categorie dal menu Categorie.")
 
     dimensione = fields.Float(string='Dimensione')
