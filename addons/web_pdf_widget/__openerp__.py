@@ -5,7 +5,7 @@ This module add a pdf preview to binary data
 
 This module works with OpenERP 9.0.
 ''',
-    'version': '7.0.1',
+    'version': '9.0.1.0.0',
     'author': 'Innoviu Srl',
     'category': 'Usability',
     'website': 'https://www.example.com',

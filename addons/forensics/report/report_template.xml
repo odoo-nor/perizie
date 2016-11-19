@@ -3,13 +3,15 @@
     <data>
         <template id="qweb_res_partner_birthdays">
             <t t-call="report.html_container">
-                <t t-call="report.internal_layout">
+                <t t-call="report.external_layout">
                     <div class="page">
                         <h2>Partner's birthdays</h2>
                         <div t-foreach="docs" t-as="o" class="row mt4 mb4">
-                            <div class="col-md-6"><t t-esc="o.name" /></div>
                             <div class="col-md-6">
-                                <t t-if="o.birthdate" t-esc="o.birthdate" />
+                                <t t-esc="o.name"/>
+                            </div>
+                            <div class="col-md-6">
+                                <t t-if="o.birthdate" t-esc="o.birthdate"/>
                                 <t t-if="not o.birthdate">-</t>
                             </div>
                         </div>
@@ -18,9 +20,9 @@
             </t>
         </template>
         <report id="report_res_partner_birthdays"
-            name="forensics.qweb_res_partner_birthdays"
-            model="res.partner"
-            string="Birthdays"
-            report_type="qweb-pdf" />
+                name="forensics.qweb_res_partner_birthdays"
+                model="res.partner"
+                string="Birthdays"
+                report_type="qweb-pdf"/>
     </data>
 </openerp>
