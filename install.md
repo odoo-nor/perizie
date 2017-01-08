@@ -3,7 +3,7 @@
 ### GIT clone
 
 ```
-git clone http://git.flosslab.com/git/r/alimenta/platform.git
+git clone https://github.com/odoo-nor/perizie.git
 cd odoo
 git submodule init
 git submodule update --depth=1
